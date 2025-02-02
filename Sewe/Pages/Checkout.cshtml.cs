@@ -60,8 +60,7 @@ namespace Sewe.Pages
                         Text = Confirmation
                     };
                     using var client = new SmtpClient();
-                    //await client.ConnectAsync("localhost");
-                    await client.ConnectAsync("smtp.google.com", 587, SecureSocketOptions.StartTls);
+                    await client.ConnectAsync("localhost");
                     await client.SendAsync(message);
                     await client.DisconnectAsync(true);
                     Response.Cookies.Append(nameof(Basket), string.Empty, new CookieOptions { Expires = DateTime.Now.AddDays(-1) });
